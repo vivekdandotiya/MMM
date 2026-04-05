@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IPL 2026 Profit Tracker ✨</title>
+  <meta name="description" content="Track your IPL 2026 betting profits and losses with a sleek Apple-style dashboard.">
+  <link rel="stylesheet" href="style.css">
+  
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/54/54481.png" type="image/png">
+</head>
+<body>
+
+  <!-- Top Action Row -->
+  <div class="action-row">
+    <h2>IPL 2026 Tracker</h2>
+    <button class="danger-btn" onclick="clearAllData()">Reset Data</button>
+  </div>
+
+  <!-- iOS Finance Dashboard Overview -->
+  <header class="dashboard">
+    <div class="stats-container">
+      <div class="stat-box">
+        <div class="stat-label">Total Net P/L</div>
+        <div class="stat-value" id="totalProfit">₹0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Plays</div>
+        <div class="stat-value" id="matchesBet">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Win Rate</div>
+        <div class="stat-value" id="winRate">0%</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Filter bar -->
+    <div class="filters" id="filters"></div>
+
+    <!-- Match Grid -->
+    <div class="matches-grid" id="matches"></div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination" id="pagination"></div>
+  </main>
+
+  <!-- Global Toast Notifications Container -->
+  <div id="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
