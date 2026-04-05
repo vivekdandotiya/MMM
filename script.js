@@ -27,7 +27,7 @@ const matches = [
   // {id:6,t1:"KKR",t2:"SRH",date:"2 Apr"},
   // {id:7,t1:"CSK",t2:"PBKS",date:"3 Apr"},
   // {id:8,t1:"DC",t2:"MI",date:"4 Apr"},
-  // {id:9,t1:"GT",t2:"RR",date:"4 Apr"},
+  {id:9,t1:"GT",t2:"RR",date:"4 Apr"},
   {id:10,t1:"SRH",t2:"LSG",date:"5 Apr"},
   {id:11,t1:"RCB",t2:"CSK",date:"5 Apr"},
   {id:12,t1:"KKR",t2:"PBKS",date:"6 Apr"},
