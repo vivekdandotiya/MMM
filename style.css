@@ -749,17 +749,39 @@ h2 {
 
 @media (max-width: 768px) {
   main, header { padding: 16px; }
-  .dashboard { padding: 20px 16px; margin-top: 20px; border-radius: 20px; }
-  .stats-container { gap: 16px; justify-content: space-between; }
-  .stat-box { flex: unset; width: 45%; min-width: unset; text-align: center; }
-  .stat-value { font-size: 26px; }
+  .dashboard { padding: 20px 16px; margin-top: 10px; border-radius: 24px; }
+  
+  /* Dashboard App Widget Grid */
+  .stats-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stats-container:not(.team-analytics) .stat-box:first-child { grid-column: 1 / -1; padding-bottom: 20px; }
+  .stat-box { width: 100%; text-align: center; padding: 12px; }
+  .stat-value { font-size: 28px; }
   .stat-box:not(:last-child)::after { display: none; }
   
-  .team-analytics .stat-box { width: 48%; }
-  .team-analytics .stat-value { font-size: 20px !important; }
+  .team-analytics { gap: 12px; margin-top: 16px; padding-top: 16px; }
+  .team-analytics .stat-box { width: 100%; padding: 16px 8px; }
+  .team-analytics .stat-value { font-size: 22px !important; }
+
+  /* Swipeable Filters Ribbon */
+  .filters {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .filters::-webkit-scrollbar { display: none; }
+  .filter-btn { 
+    flex: 0 0 auto; 
+    white-space: nowrap; 
+    padding: 10px 20px; 
+    font-size: 14px; 
+  }
 
   .matches-grid { grid-template-columns: 1fr; gap: 16px; margin-bottom: 30px; }
-  .match-card { padding: 20px 16px; border-radius: 20px; margin: 0; width: 100%; box-sizing: border-box; }
+  .match-card { padding: 20px 16px; border-radius: 24px; margin: 0; width: 100%; box-sizing: border-box; }
   
   .vs-arena { gap: 8px; margin-bottom: 24px; }
   .logo-ring { width: 54px; height: 54px; padding: 8px; margin-bottom: 8px; }
@@ -771,16 +793,16 @@ h2 {
   .segment-label { font-size: 13px; padding: 8px 0; }
   
   .fab-container { bottom: 20px; right: 20px; }
-  .fab { width: 56px; height: 56px; }
+  .fab { width: 56px; height: 56px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
   .calculator-modal { bottom: 85px; right: 20px; width: calc(100vw - 40px); max-width: 320px; padding: 16px; }
   
+  .activity-item { padding: 16px; border-radius: 16px; }
   .activity-title { font-size: 14px; }
   .activity-time { font-size: 11px; }
   .activity-amount { font-size: 15px; }
   
   h2 { font-size: 22px; margin-bottom: 16px; }
-  .filter-btn { padding: 8px 16px; font-size: 13px; }
   
-  .view-tabs { gap: 8px; margin-bottom: 24px; }
-  .view-tab { padding: 10px 20px; font-size: 14px; flex: 1; text-align: center; }
+  .view-tabs { gap: 8px; margin-bottom: 20px; margin-top: 5px; }
+  .view-tab { padding: 12px 10px; font-size: 14px; flex: 1; text-align: center; border-radius: 16px; }
 }
