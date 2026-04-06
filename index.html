@@ -10,15 +10,21 @@
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/54/54481.png" type="image/png">
 </head>
 <body>
+  <!-- Ambient Background Orbs -->
+  <div class="ambient-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
   <!-- Top Action Row -->
   <div class="action-row">
     <h2>IPL 2026 Tracker</h2>
-    <button class="danger-btn" onclick="clearAllData()">Reset Data</button>
+    <button class="reset-btn" onclick="clearAllData()">Reset Data</button>
   </div>
 
   <!-- iOS Finance Dashboard Overview -->
-  <header class="dashboard">
+  <header class="dashboard glass-panel">
     <div class="wallet-input-container" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid var(--glass-border);">
       <div class="stat-label">Initial Wallet Deduction</div>
       <div class="input-container" style="max-width: 250px; width: 100%; margin-bottom: 0; margin-top: 10px;">
@@ -40,6 +46,12 @@
         <div class="stat-value" id="winRate">0%</div>
       </div>
     </div>
+
+    <!-- Strategy Notes Section -->
+    <div class="notes-container">
+      <div class="stat-label" style="margin-top: 30px; margin-bottom: 15px; text-align: left;">Strategy & Notes</div>
+      <textarea id="strategyNotes" class="glass-input notes-area" placeholder="Jot down your weekly betting strategies or reminders here..." oninput="autoSaveNotes()"></textarea>
+    </div>
   </header>
 
   <main>
@@ -55,6 +67,59 @@
 
   <!-- Global Toast Notifications Container -->
   <div id="toast-container"></div>
+
+  <!-- Floating Calculator -->
+  <div class="fab-container">
+    <button class="fab glass-panel" onclick="toggleCalculator()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+        <line x1="8" y1="6" x2="16" y2="6"></line>
+        <line x1="16" y1="14" x2="16" y2="18"></line>
+        <line x1="16" y1="10" x2="16" y2="10"></line>
+        <line x1="8" y1="10" x2="8" y2="10"></line>
+        <line x1="12" y1="10" x2="12" y2="10"></line>
+        <line x1="8" y1="14" x2="8" y2="14"></line>
+        <line x1="12" y1="14" x2="12" y2="14"></line>
+        <line x1="8" y1="18" x2="8" y2="18"></line>
+        <line x1="12" y1="18" x2="12" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div class="calculator-modal glass-panel" id="calcModal">
+    <div class="calc-header">
+      <span>Calculator</span>
+      <button class="calc-close" onclick="toggleCalculator()">&times;</button>
+    </div>
+    <div class="calc-display">
+      <div class="calc-expression" id="calcExpression"></div>
+      <div class="calc-main" id="calcDisplay">0</div>
+    </div>
+    <div class="calc-keys">
+      <button class="calc-btn action" onclick="calcAction('clear')">AC</button>
+      <button class="calc-btn action" onclick="calcAction('delete')">DEL</button>
+      <button class="calc-btn operator" onclick="calcOp('/')">&divide;</button>
+      <button class="calc-btn operator" onclick="calcOp('*')">&times;</button>
+      
+      <button class="calc-btn" onclick="calcNum('7')">7</button>
+      <button class="calc-btn" onclick="calcNum('8')">8</button>
+      <button class="calc-btn" onclick="calcNum('9')">9</button>
+      <button class="calc-btn operator" onclick="calcOp('-')">-</button>
+      
+      <button class="calc-btn" onclick="calcNum('4')">4</button>
+      <button class="calc-btn" onclick="calcNum('5')">5</button>
+      <button class="calc-btn" onclick="calcNum('6')">6</button>
+      <button class="calc-btn operator" onclick="calcOp('+')">+</button>
+      
+      <button class="calc-btn" onclick="calcNum('1')">1</button>
+      <button class="calc-btn" onclick="calcNum('2')">2</button>
+      <button class="calc-btn" onclick="calcNum('3')">3</button>
+      <button class="calc-btn equals" style="grid-row: span 2;" onclick="calcCalculate()">=</button>
+      
+      <button class="calc-btn" style="grid-column: span 2;" onclick="calcNum('0')">0</button>
+      <button class="calc-btn" onclick="calcNum('.')">.</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

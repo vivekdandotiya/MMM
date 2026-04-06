@@ -106,8 +106,19 @@ function init() {
   if (savedWallet && document.getElementById('baseWallet')) {
     document.getElementById('baseWallet').value = savedWallet;
   }
+  
+  const savedNotes = localStorage.getItem('strategyNotes');
+  if (savedNotes && document.getElementById('strategyNotes')) {
+    document.getElementById('strategyNotes').value = savedNotes;
+  }
+
   renderFilters();
   applyFilter();
+}
+
+function autoSaveNotes() {
+  const notes = document.getElementById('strategyNotes').value;
+  localStorage.setItem('strategyNotes', notes);
 }
 
 function updateWallet() {
@@ -326,3 +337,107 @@ function clearAllData() {
 
 // Start app
 window.onload = init;
+
+// CALCULATOR LOGIC
+let calcCurrent = '0';
+let calcPrev = '';
+let calcOperator = null;
+let calcResetDisplay = false;
+
+function toggleCalculator() {
+  const modal = document.getElementById('calcModal');
+  modal.classList.toggle('show');
+}
+
+function updateCalcDisplay() {
+  const main = document.getElementById('calcDisplay');
+  const expr = document.getElementById('calcExpression');
+  
+  // Format numbers nicely with commas if possible
+  main.innerText = calcCurrent.length > 12 ? Number(calcCurrent).toExponential(4) : calcCurrent;
+  
+  if (calcOperator != null) {
+    expr.innerText = `${calcPrev} ${calcOperator}`;
+  } else {
+    expr.innerText = '';
+  }
+}
+
+function calcNum(num) {
+  if (calcCurrent === '0' && num !== '.') {
+    calcCurrent = num;
+  } else if (calcResetDisplay) {
+    if (num === '.') {
+      calcCurrent = '0.';
+    } else {
+      calcCurrent = num;
+    }
+    calcResetDisplay = false;
+  } else {
+    if (num === '.' && calcCurrent.includes('.')) return;
+    calcCurrent += num;
+  }
+  updateCalcDisplay();
+}
+
+function calcOp(op) {
+  if (calcOperator !== null && !calcResetDisplay) {
+    calcCalculate();
+  }
+  calcPrev = calcCurrent;
+  calcOperator = op;
+  calcResetDisplay = true;
+  updateCalcDisplay();
+}
+
+function calcCalculate() {
+  if (calcOperator === null || calcResetDisplay) return;
+  
+  let result;
+  const prev = parseFloat(calcPrev);
+  const curr = parseFloat(calcCurrent);
+  
+  if (isNaN(prev) || isNaN(curr)) return;
+  
+  switch (calcOperator) {
+    case '+': result = prev + curr; break;
+    case '-': result = prev - curr; break;
+    case '*': result = prev * curr; break;
+    case '/': 
+      if (curr === 0) {
+        alert("Cannot divide by zero!");
+        calcAction('clear');
+        return;
+      }
+      result = prev / curr; 
+      break;
+    default: return;
+  }
+  
+  // Round to prevent JS floating point issues
+  calcCurrent = Math.round(result * 10000000) / 10000000;
+  calcCurrent = calcCurrent.toString();
+  calcOperator = null;
+  calcPrev = '';
+  calcResetDisplay = true;
+  updateCalcDisplay();
+}
+
+function calcAction(action) {
+  if (action === 'clear') {
+    calcCurrent = '0';
+    calcPrev = '';
+    calcOperator = null;
+    calcResetDisplay = false;
+  } else if (action === 'delete') {
+    if (calcResetDisplay) {
+      calcAction('clear');
+      return;
+    }
+    calcCurrent = calcCurrent.slice(0, -1);
+    if (calcCurrent === '' || calcCurrent === '-' || calcCurrent === '-0') {
+      calcCurrent = '0';
+    }
+  }
+  updateCalcDisplay();
+}
