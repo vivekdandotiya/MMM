@@ -156,6 +156,37 @@ h2 {
   transform: translateY(-2px);
 }
 
+/* View Tabs */
+.view-tabs {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
+.view-tab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  padding: 12px 32px;
+  border-radius: 40px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+}
+.view-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+.view-tab.active {
+  background: var(--accent-blue);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(10, 132, 255, 0.4);
+}
+
 /* Filters - Sleek Pills */
 .filters {
   display: flex;
@@ -749,4 +780,7 @@ h2 {
   
   h2 { font-size: 22px; margin-bottom: 16px; }
   .filter-btn { padding: 8px 16px; font-size: 13px; }
+  
+  .view-tabs { gap: 8px; margin-bottom: 24px; }
+  .view-tab { padding: 10px 20px; font-size: 14px; flex: 1; text-align: center; }
 }

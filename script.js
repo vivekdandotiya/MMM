@@ -97,6 +97,7 @@ const matches = [
 ];
 
 let currentFilter = "All";
+let currentView = "Upcoming";
 let currentPage = 1;
 const ITEMS_PER_PAGE = 8;
 let filteredMatches = [...matches];
@@ -107,6 +108,7 @@ function init() {
     document.getElementById('baseWallet').value = savedWallet;
   }
 
+  if (document.getElementById('viewTabs')) renderViewTabs();
   renderFilters();
   applyFilter();
   renderRecentActivity();
@@ -116,6 +118,22 @@ function updateWallet() {
   const val = document.getElementById('baseWallet').value;
   localStorage.setItem('baseWallet', val);
   render();
+}
+
+function renderViewTabs() {
+  const tabsContainer = document.getElementById("viewTabs");
+  if (!tabsContainer) return;
+  tabsContainer.innerHTML = `
+    <button class="view-tab ${currentView === 'Upcoming' ? 'active' : ''}" onclick="setView('Upcoming')">Upcoming Matches</button>
+    <button class="view-tab ${currentView === 'Completed' ? 'active' : ''}" onclick="setView('Completed')">Completed Bets</button>
+  `;
+}
+
+function setView(view) {
+  currentView = view;
+  currentPage = 1;
+  renderViewTabs();
+  applyFilter();
 }
 
 function renderFilters() {
@@ -135,11 +153,22 @@ function setFilter(team) {
 }
 
 function applyFilter() {
-  if (currentFilter === "All") {
-    filteredMatches = [...matches];
-  } else {
-    filteredMatches = matches.filter(m => m.t1 === currentFilter || m.t2 === currentFilter);
+  let subset = matches;
+  if (currentFilter !== "All") {
+    subset = subset.filter(m => m.t1 === currentFilter || m.t2 === currentFilter);
   }
+  
+  filteredMatches = subset.filter(m => {
+    const saved = JSON.parse(localStorage.getItem(m.id));
+    const isCompleted = saved && saved.amount && saved.status;
+    
+    if (currentView === "Upcoming") {
+      return !isCompleted;
+    } else {
+      return isCompleted;
+    }
+  });
+  
   render();
 }
 
@@ -383,7 +412,7 @@ function renderRecentActivity() {
   });
   
   activities.sort((a, b) => b.timestamp - a.timestamp);
-  const recent = activities.slice(0, 4);
+  const recent = activities.slice(0, 3);
   
   if (recent.length === 0) {
     container.innerHTML = `<div class="empty-state">No recent activity found. Save a bet to see it here.</div>`;
