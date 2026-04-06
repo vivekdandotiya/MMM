@@ -85,16 +85,16 @@ const venueData = {
 
 // Player Roles: 🏏 Batter, ⚾ Bowler, ⚡ All-Rounder, 🧤 Wicketkeeper
 const squadData = {
-  "CSK": ["Ruturaj Gaikwad (c) 🏏", "Devon Conway (wk) 🧤", "Rachin Ravindra ⚡", "Shivam Dube ⚡", "Sam Curran ⚡", "Ravindra Jadeja ⚡", "MS Dhoni (wk) 🧤", "Ravichandran Ashwin ⚡", "Deepak Chahar ⚾", "Khaleel Ahmed ⚾", "Matheesha Pathirana ⚾"],
-  "RCB": ["Virat Kohli 🏏", "Phil Salt (c)(wk) 🧤", "Rajat Patidar 🏏", "Liam Livingstone ⚡", "Tim David ⚡", "Krunal Pandya ⚡", "Swapnil Singh ⚡", "Bhuvneshwar Kumar ⚾", "Josh Hazlewood ⚾", "Yash Dayal ⚾", "Jofra Archer ⚾"],
-  "MI": ["Rohit Sharma 🏏", "Ryan Rickelton (wk) 🧤", "Suryakumar Yadav 🏏", "Tilak Varma 🏏", "Hardik Pandya (c) ⚡", "Naman Dhir ⚡", "Mitchell Santner ⚡", "Trent Boult ⚾", "Jasprit Bumrah ⚾", "Nandre Burger ⚾", "Allah Ghazanfar ⚾"],
-  "KKR": ["Quinton de Kock (wk) 🧤", "Venkatesh Iyer 🏏", "Angkrish Raghuvanshi 🏏", "Nitish Rana 🏏", "Rinku Singh 🏏", "Andre Russell ⚡", "Ramandeep Singh ⚡", "Sunil Narine ⚡", "Varun Chakaravarthy ⚾", "Harshit Rana ⚾", "Spencer Johnson ⚾"],
-  "RR": ["Yashasvi Jaiswal 🏏", "Kumar Kushagra (wk) 🧤", "Sanju Samson (c)(wk) 🧤", "Riyan Parag ⚡", "Shimron Hetmyer 🏏", "Dhruv Jurel 🏏", "Wanindu Hasaranga ⚡", "Tushar Deshpande ⚾", "Sandeep Sharma ⚾", "Maheesh Theekshana ⚾", "Akash Madhwal ⚾"],
-  "SRH": ["Travis Head 🏏", "Abhishek Sharma ⚡", "Ishan Kishan (wk) 🧤", "Heinrich Klaasen 🧤", "Nitish Kumar Reddy ⚡", "Rahul Chahar ⚾", "Pat Cummins (c) ⚡", "Harshal Patel ⚾", "Mohammed Shami ⚾", "Jaydev Unadkat ⚾", "Adam Zampa ⚾"],
-  "DC": ["KL Rahul (c)(wk) 🧤", "Faf du Plessis 🏏", "Jake Fraser-McGurk 🏏", "Harry Brook 🏏", "Tristan Stubbs 🏏", "Abhishek Porel 🧤", "Axar Patel ⚡", "Mitchell Starc ⚾", "Kuldeep Yadav ⚾", "Mukesh Kumar ⚾", "T Natarajan ⚾"],
-  "PBKS": ["Prabhsimran Singh (wk) 🧤", "Shreyas Iyer (c) 🏏", "Marcus Stoinis ⚡", "Glenn Maxwell ⚡", "Nehal Wadhera 🏏", "Shashank Singh 🏏", "Harpreet Brar ⚡", "Yuzvendra Chahal ⚾", "Arshdeep Singh ⚾", "Umran Malik ⚾", "Marco Jansen ⚡"],
-  "GT": ["Shubman Gill (c) 🏏", "Sai Sudharsan 🏏", "Jos Buttler (wk) 🧤", "Glenn Phillips 🏏", "Shahrukh Khan ⚡", "Rahul Tewatia ⚡", "Washington Sundar ⚡", "Rashid Khan ⚡", "Mohammed Siraj ⚾", "Kagiso Rabada ⚾", "Gerald Coetzee ⚾"],
-  "LSG": ["Matthew Breetzke 🏏", "Rishabh Pant (c)(wk) 🧤", "Nicholas Pooran 🏏", "David Miller 🏏", "Aiden Markram ⚡", "Ayush Badoni 🏏", "Mitchell Marsh ⚡", "Ravi Bishnoi ⚾", "Mayank Yadav ⚾", "Mohsin Khan ⚾", "Avesh Khan ⚾"]
+  "CSK": ["Ruturaj Gaikwad (c) 🏏", "Devon Conway (wk) 🧤", "Rachin Ravindra ⚡", "Shivam Dube ⚡", "MS Dhoni (wk) 🧤", "Ravindra Jadeja ⚡", "Sam Curran ⚡", "Rahul Tripathi 🏏", "Ravichandran Ashwin ⚡", "Khaleel Ahmed ⚾", "Deepak Chahar ⚾", "Matheesha Pathirana ⚾", "Noor Ahmad ⚾"],
+  "RCB": ["Virat Kohli (c) 🏏", "Phil Salt (wk) 🧤", "Rajat Patidar 🏏", "Liam Livingstone ⚡", "Tim David ⚡", "Krunal Pandya ⚡", "Jitesh Sharma 🧤", "Swapnil Singh ⚡", "Bhuvneshwar Kumar ⚾", "Josh Hazlewood ⚾", "Rasikh Dar ⚾", "Vijaykumar Vyshak ⚾", "Suyash Sharma ⚾"],
+  "MI": ["Hardik Pandya (c) ⚡", "Rohit Sharma 🏏", "Suryakumar Yadav 🏏", "Jasprit Bumrah ⚾", "Tilak Varma 🏏", "Ryan Rickelton (wk) 🧤", "Will Jacks ⚡", "Naman Dhir ⚡", "Mitchell Santner ⚡", "Trent Boult ⚾", "Deepak Chahar ⚾", "Reece Topley ⚾", "Robin Minz 🧤"],
+  "KKR": ["Shreyas Iyer (c) 🏏", "Quinton de Kock (wk) 🧤", "Venkatesh Iyer ⚡", "Rinku Singh 🏏", "Andre Russell ⚡", "Sunil Narine ⚡", "Ramandeep Singh ⚡", "Varun Chakaravarthy ⚾", "Harshit Rana ⚾", "Rahmanullah Gurbaz 🧤", "Angkrish Raghuvanshi 🏏", "Manish Pandey 🏏", "Anrich Nortje ⚾"],
+  "RR": ["Sanju Samson (c)(wk) 🧤", "Yashasvi Jaiswal 🏏", "Riyan Parag ⚡", "Dhruv Jurel 🏏", "Shimron Hetmyer 🏏", "Nitish Rana 🏏", "Wanindu Hasaranga ⚡", "Jofra Archer ⚾", "Sandeep Sharma ⚾", "Tushar Deshpande ⚾", "Maheesh Theekshana ⚾", "Akash Madhwal ⚾", "Fazalhaq Farooqi ⚾"],
+  "SRH": ["Pat Cummins (c) ⚡", "Travis Head 🏏", "Abhishek Sharma ⚡", "Heinrich Klaasen (wk) 🧤", "Ishan Kishan 🧤", "Nitish Kumar Reddy ⚡", "Abhinav Manohar 🏏", "Mohammed Shami ⚾", "Harshal Patel ⚾", "Rahul Chahar ⚾", "Jaydev Unadkat ⚾", "Wiaan Mulder ⚡", "Adam Zampa ⚾"],
+  "DC": ["KL Rahul (c)(wk) 🧤", "Jake Fraser-McGurk 🏏", "Faf du Plessis 🏏", "Tristan Stubbs 🏏", "Axar Patel ⚡", "Abishek Porel 🧤", "Mitchell Starc ⚾", "Kuldeep Yadav ⚾", "T. Natarajan ⚾", "Mukesh Kumar ⚾", "Mohit Sharma ⚾", "Ashutosh Sharma 🏏", "Karun Nair 🏏"],
+  "PBKS": ["Shreyas Iyer (c) 🏏", "Prabhsimran Singh (wk) 🧤", "Shashank Singh 🏏", "Nehal Wadhera 🏏", "Glenn Maxwell ⚡", "Marcus Stoinis ⚡", "Harpreet Brar ⚡", "Azmatullah Omarzai ⚡", "Marco Jansen ⚡", "Yuzvendra Chahal ⚾", "Arshdeep Singh ⚾", "Yash Thakur ⚾", "Josh Inglis 🧤"],
+  "GT": ["Shubman Gill (c) 🏏", "Jos Buttler (wk) 🧤", "Sai Sudharsan 🏏", "Rahul Tewatia ⚡", "Shahrukh Khan ⚡", "Rashid Khan ⚡", "Washington Sundar ⚡", "Mohammed Siraj ⚾", "Kagiso Rabada ⚾", "Gerald Coetzee ⚾", "Prasidh Krishna ⚾", "Anuj Rawat 🧤", "Mahipal Lomror ⚡"],
+  "LSG": ["Rishabh Pant (c)(wk) 🧤", "Nicholas Pooran 🏏", "David Miller 🏏", "Ayush Badoni 🏏", "Aiden Markram ⚡", "Mitchell Marsh ⚡", "Abdul Samad ⚡", "Ravi Bishnoi ⚾", "Mayank Yadav ⚾", "Mohsin Khan ⚾", "Avesh Khan ⚾", "Shahbaz Ahmed ⚡", "Aryan Juyal 🧤"]
 };
 
 // Simulated historical venue performance for players active in 2025
