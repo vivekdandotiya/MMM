@@ -166,6 +166,8 @@ function render() {
   let matchesBetCount = 0;
   let matchesWon = 0;
   
+  let teamProfits = {};
+
   matches.forEach(match => {
     const saved = JSON.parse(localStorage.getItem(match.id)) || {};
     if (saved.amount && saved.status) {
@@ -174,8 +176,12 @@ function render() {
       if (saved.status === "profit") {
         totalProfit += amt;
         matchesWon++;
+        teamProfits[match.t1] = (teamProfits[match.t1] || 0) + amt;
+        teamProfits[match.t2] = (teamProfits[match.t2] || 0) + amt;
       } else if (saved.status === "loss") {
         totalProfit -= amt;
+        teamProfits[match.t1] = (teamProfits[match.t1] || 0) - amt;
+        teamProfits[match.t2] = (teamProfits[match.t2] || 0) - amt;
       }
     }
   });
@@ -202,6 +208,50 @@ function render() {
   
   const winRate = matchesBetCount > 0 ? Math.round((matchesWon / matchesBetCount) * 100) : 0;
   document.getElementById("winRate").innerText = `${winRate}%`;
+
+  // Team Analytics Setup
+  let goldmineTeam = "-";
+  let maxProfit = -9999999;
+  let sinkTeam = "-";
+  let minProfit = 9999999;
+  
+  for (const team in teamProfits) {
+    // Only consider teams, not "TBD" etc.
+    if (team === 'TBD' || team.includes('Qualifier') || team === 'Final' || team === 'Eliminator') continue;
+    
+    if (teamProfits[team] > maxProfit) {
+      maxProfit = teamProfits[team];
+      goldmineTeam = team;
+    }
+    if (teamProfits[team] < minProfit) {
+      minProfit = teamProfits[team];
+      sinkTeam = team;
+    }
+  }
+
+  const gmTeamEl = document.getElementById("goldmineTeam");
+  const gmProfitEl = document.getElementById("goldmineProfit");
+  if (gmTeamEl && gmProfitEl) {
+    if (maxProfit > 0) {
+      gmTeamEl.innerText = goldmineTeam;
+      gmProfitEl.innerText = `+₹${maxProfit}`;
+    } else {
+      gmTeamEl.innerText = "-";
+      gmProfitEl.innerText = `+₹0`;
+    }
+  }
+
+  const sinkTeamEl = document.getElementById("sinkTeam");
+  const sinkLossEl = document.getElementById("sinkLoss");
+  if (sinkTeamEl && sinkLossEl) {
+    if (minProfit < 0) {
+      sinkTeamEl.innerText = sinkTeam;
+      sinkLossEl.innerText = `-₹${Math.abs(minProfit)}`;
+    } else {
+      sinkTeamEl.innerText = "-";
+      sinkLossEl.innerText = `-₹0`;
+    }
+  }
 
   // Pagination bounds
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
