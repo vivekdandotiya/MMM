@@ -102,17 +102,17 @@ const ITEMS_PER_PAGE = 8;
 let filteredMatches = [...matches];
 
 function init() {
-  const savedWallet = localStorage.getItem("walletDeduction");
-  if (savedWallet) {
-    document.getElementById("walletDeduction").value = savedWallet;
+  const savedWallet = localStorage.getItem('baseWallet');
+  if (savedWallet && document.getElementById('baseWallet')) {
+    document.getElementById('baseWallet').value = savedWallet;
   }
   renderFilters();
   applyFilter();
 }
 
-function updateWalletDeduction() {
-  const val = document.getElementById("walletDeduction").value;
-  localStorage.setItem("walletDeduction", val);
+function updateWallet() {
+  const val = document.getElementById('baseWallet').value;
+  localStorage.setItem('baseWallet', val);
   render();
 }
 
@@ -159,7 +159,7 @@ function render() {
   container.innerHTML = "";
   
   // Dashboard Calculations (always calculate based on ALL matches data)
-  const walletDeduction = Number(localStorage.getItem("walletDeduction")) || 0;
+  const walletDeduction = Number(localStorage.getItem('baseWallet')) || 0;
   let totalProfit = -walletDeduction;
   let matchesBetCount = 0;
   let matchesWon = 0;
@@ -315,8 +315,10 @@ function save(id, matchTitle) {
 function clearAllData() {
   if (confirm("Are you sure you want to clear ALL saved betting data? This cannot be undone.")) {
     matches.forEach(m => localStorage.removeItem(m.id));
-    localStorage.removeItem("walletDeduction");
-    document.getElementById("walletDeduction").value = "";
+    localStorage.removeItem('baseWallet');
+    if (document.getElementById('baseWallet')) {
+      document.getElementById('baseWallet').value = "";
+    }
     showToast("All data cleared successfully");
     render();
   }
