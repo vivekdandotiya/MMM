@@ -19,6 +19,10 @@
 
   <!-- iOS Finance Dashboard Overview -->
   <header class="dashboard">
+    <div class="wallet-insertion" style="margin-bottom: 24px;">
+      <div class="stat-label" style="margin-bottom: 8px;">Initial Bankroll / Wallet Deduction</div>
+      <input type="number" id="walletDeduction" class="glass-input" placeholder="Enter total amount taken from wallet..." oninput="updateWalletDeduction()">
+    </div>
     <div class="stats-container">
       <div class="stat-box">
         <div class="stat-label">Total Net P/L</div>
