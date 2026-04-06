@@ -85,30 +85,30 @@ const venueData = {
 
 // Player Roles: 🏏 Batter, ⚾ Bowler, ⚡ All-Rounder, 🧤 Wicketkeeper
 const squadData = {
-  "CSK": ["Ruturaj Gaikwad (c) 🏏", "Rachin Ravindra ⚡", "Prashant Veer 🏏", "Shivam Dube ⚡", "MS Dhoni (wk) 🧤", "Ravindra Jadeja ⚡", "Kartik Sharma ⚾", "Deepak Chahar ⚾", "Mustafizur Rahman ⚾", "Matheesha Pathirana ⚾", "Rahul Chahar ⚾"],
-  "RCB": ["Virat Kohli (c) 🏏", "Faf du Plessis 🏏", "Will Jacks ⚡", "Rajat Patidar 🏏", "Glenn Maxwell ⚡", "Dinesh Karthik (wk) 🧤", "Venkatesh Iyer ⚡", "Mohammed Siraj ⚾", "Bhuvneshwar Kumar ⚾", "Jacob Duffy ⚾", "Yash Dayal ⚾"],
-  "MI": ["Rohit Sharma 🏏", "Ishan Kishan (wk) 🧤", "Suryakumar Yadav 🏏", "Hardik Pandya (c) ⚡", "Tilak Varma 🏏", "Tim David 🏏", "Quinton de Kock 🧤", "Jasprit Bumrah ⚾", "Piyush Chawla ⚾", "Gerald Coetzee ⚾", "N. Thushara ⚾"],
-  "KKR": ["Finn Allen 🏏", "Ajinkya Rahane 🏏", "Angkrish Raghuvanshi 🏏", "Shreyas Iyer (c) 🏏", "Rinku Singh 🏏", "Cameron Green ⚡", "Sunil Narine ⚡", "Varun Chakaravarthy ⚾", "Mitchell Starc ⚾", "Harshit Rana ⚾", "Vaibhav Arora ⚾"],
-  "RR": ["Yashasvi Jaiswal 🏏", "Jos Buttler 🧤", "Sanju Samson (c)(wk) 🧤", "Riyan Parag ⚡", "Dhruv Jurel 🏏", "Rovman Powell 🏏", "Ravichandran Ashwin ⚡", "Yuzvendra Chahal ⚾", "Trent Boult ⚾", "Avesh Khan ⚾", "Jofra Archer ⚾"],
-  "SRH": ["Travis Head 🏏", "Abhishek Sharma ⚡", "Pat Cummins (c) ⚡", "Heinrich Klaasen (wk) 🧤", "Aiden Markram ⚡", "Abdul Samad 🏏", "Liam Livingstone ⚡", "Washington Sundar ⚡", "Bhuvneshwar Kumar ⚾", "T Natarajan ⚾", "Mayank Markande ⚾"],
-  "DC": ["David Warner 🏏", "Prithvi Shaw 🏏", "Mitchell Marsh ⚡", "Rishabh Pant (c)(wk) 🧤", "David Miller 🏏", "Axar Patel ⚡", "Lalit Yadav ⚡", "Kuldeep Yadav ⚾", "Khaleel Ahmed ⚾", "Anrich Nortje ⚾", "Mukesh Kumar ⚾"],
-  "PBKS": ["Shikhar Dhawan (c) 🏏", "Prabhsimran Singh 🧤", "Liam Livingstone ⚡", "Sam Curran ⚡", "Jitesh Sharma (wk) 🧤", "Shashank Singh 🏏", "Ashutosh Sharma 🏏", "Harshal Patel ⚾", "Kagiso Rabada ⚾", "Arshdeep Singh ⚾", "Rahul Chahar ⚾"],
-  "GT": ["Shubman Gill (c) 🏏", "Sai Sudharsan 🏏", "Shahrukh Khan ⚡", "David Miller 🏏", "Rahul Tewatia ⚡", "Rashid Khan ⚡", "Noor Ahmad ⚾", "Mohit Sharma ⚾", "Umesh Yadav ⚾", "Spencer Johnson ⚾", "Joshua Little ⚾"],
-  "LSG": ["KL Rahul (c)(wk) 🧤", "Quinton de Kock 🧤", "Nicholas Pooran 🏏", "Marcus Stoinis ⚡", "Ayush Badoni 🏏", "Krunal Pandya ⚡", "Ravi Bishnoi ⚾", "Mohsin Khan ⚾", "Naveen-ul-Haq ⚾", "Yash Thakur ⚾", "Amit Mishra ⚾"]
+  "CSK": ["Ruturaj Gaikwad (c) 🏏", "Devon Conway (wk) 🧤", "Rachin Ravindra ⚡", "Shivam Dube ⚡", "Sam Curran ⚡", "Ravindra Jadeja ⚡", "MS Dhoni (wk) 🧤", "Ravichandran Ashwin ⚡", "Deepak Chahar ⚾", "Khaleel Ahmed ⚾", "Matheesha Pathirana ⚾"],
+  "RCB": ["Virat Kohli 🏏", "Phil Salt (c)(wk) 🧤", "Rajat Patidar 🏏", "Liam Livingstone ⚡", "Tim David ⚡", "Krunal Pandya ⚡", "Swapnil Singh ⚡", "Bhuvneshwar Kumar ⚾", "Josh Hazlewood ⚾", "Yash Dayal ⚾", "Jofra Archer ⚾"],
+  "MI": ["Rohit Sharma 🏏", "Ryan Rickelton (wk) 🧤", "Suryakumar Yadav 🏏", "Tilak Varma 🏏", "Hardik Pandya (c) ⚡", "Naman Dhir ⚡", "Mitchell Santner ⚡", "Trent Boult ⚾", "Jasprit Bumrah ⚾", "Nandre Burger ⚾", "Allah Ghazanfar ⚾"],
+  "KKR": ["Quinton de Kock (wk) 🧤", "Venkatesh Iyer 🏏", "Angkrish Raghuvanshi 🏏", "Nitish Rana 🏏", "Rinku Singh 🏏", "Andre Russell ⚡", "Ramandeep Singh ⚡", "Sunil Narine ⚡", "Varun Chakaravarthy ⚾", "Harshit Rana ⚾", "Spencer Johnson ⚾"],
+  "RR": ["Yashasvi Jaiswal 🏏", "Kumar Kushagra (wk) 🧤", "Sanju Samson (c)(wk) 🧤", "Riyan Parag ⚡", "Shimron Hetmyer 🏏", "Dhruv Jurel 🏏", "Wanindu Hasaranga ⚡", "Tushar Deshpande ⚾", "Sandeep Sharma ⚾", "Maheesh Theekshana ⚾", "Akash Madhwal ⚾"],
+  "SRH": ["Travis Head 🏏", "Abhishek Sharma ⚡", "Ishan Kishan (wk) 🧤", "Heinrich Klaasen 🧤", "Nitish Kumar Reddy ⚡", "Rahul Chahar ⚾", "Pat Cummins (c) ⚡", "Harshal Patel ⚾", "Mohammed Shami ⚾", "Jaydev Unadkat ⚾", "Adam Zampa ⚾"],
+  "DC": ["KL Rahul (c)(wk) 🧤", "Faf du Plessis 🏏", "Jake Fraser-McGurk 🏏", "Harry Brook 🏏", "Tristan Stubbs 🏏", "Abhishek Porel 🧤", "Axar Patel ⚡", "Mitchell Starc ⚾", "Kuldeep Yadav ⚾", "Mukesh Kumar ⚾", "T Natarajan ⚾"],
+  "PBKS": ["Prabhsimran Singh (wk) 🧤", "Shreyas Iyer (c) 🏏", "Marcus Stoinis ⚡", "Glenn Maxwell ⚡", "Nehal Wadhera 🏏", "Shashank Singh 🏏", "Harpreet Brar ⚡", "Yuzvendra Chahal ⚾", "Arshdeep Singh ⚾", "Umran Malik ⚾", "Marco Jansen ⚡"],
+  "GT": ["Shubman Gill (c) 🏏", "Sai Sudharsan 🏏", "Jos Buttler (wk) 🧤", "Glenn Phillips 🏏", "Shahrukh Khan ⚡", "Rahul Tewatia ⚡", "Washington Sundar ⚡", "Rashid Khan ⚡", "Mohammed Siraj ⚾", "Kagiso Rabada ⚾", "Gerald Coetzee ⚾"],
+  "LSG": ["Matthew Breetzke 🏏", "Rishabh Pant (c)(wk) 🧤", "Nicholas Pooran 🏏", "David Miller 🏏", "Aiden Markram ⚡", "Ayush Badoni 🏏", "Mitchell Marsh ⚡", "Ravi Bishnoi ⚾", "Mayank Yadav ⚾", "Mohsin Khan ⚾", "Avesh Khan ⚾"]
 };
 
 // Simulated historical venue performance for players active in 2025
 const historicalVenueStats = {
   "CSK": [{player: "MS Dhoni", stat: "Average SR 180 here in 2025"}, {player: "R. Jadeja", stat: "6 Wickets at Econ 6.2"}],
-  "RCB": [{player: "V. Kohli", stat: "2 Centuries at this venue in 2025"}, {player: "M. Siraj", stat: "8 Wickets in Powerplays"}],
+  "RCB": [{player: "V. Kohli", stat: "2 Centuries at this venue in 2025"}, {player: "B. Kumar", stat: "8 Wickets in Powerplays"}],
   "MI": [{player: "R. Sharma", stat: "Highest Score: 92 (2025)"}, {player: "J. Bumrah", stat: "Lowest Economy (5.4) at Wankhede"}],
   "KKR": [{player: "S. Narine", stat: "Most Economical Spinner 2025"}, {player: "Rinku Singh", stat: "Strike Rate 210 at Eden Gardens"}],
-  "RR": [{player: "S. Samson", stat: "Defended 3 totals alone in 2025"}, {player: "Y. Chahal", stat: "Most Wickets (9) at Jaipur venue"}],
+  "RR": [{player: "S. Samson", stat: "Defended 3 totals alone in 2025"}, {player: "S. Sharma", stat: "Most Wickets (9) at Jaipur venue"}],
   "SRH": [{player: "T. Head", stat: "Scored 100 in 39 balls here"}, {player: "P. Cummins", stat: "Taken 5-fer in 2025 at venue"}],
-  "DC": [{player: "R. Pant", stat: "Highest Chase Average (60.5)"}, {player: "K. Yadav", stat: "Spin dominance in middle overs"}],
-  "PBKS": [{player: "S. Dhawan", stat: "Solid anchoring, Avg 45 at Mullanpur"}, {player: "S. Curran", stat: "Death overs specialist 2025"}],
+  "DC": [{player: "KL Rahul", stat: "Highest Chase Average (60.5)"}, {player: "K. Yadav", stat: "Spin dominance in middle overs"}],
+  "PBKS": [{player: "S. Iyer", stat: "Solid anchoring, Avg 45 at Mullanpur"}, {player: "A. Singh", stat: "Death overs specialist 2025"}],
   "GT": [{player: "S. Gill", stat: "Unbeaten 120 in 2025 at venue"}, {player: "R. Khan", stat: "Unplayable Googly at Ahmedabad"}],
-  "LSG": [{player: "KL Rahul", stat: "Steady average 55.4"}, {player: "R. Bishnoi", stat: "Best figures 4/15 at Ekana"}]
+  "LSG": [{player: "R. Pant", stat: "Steady average 55.4"}, {player: "R. Bishnoi", stat: "Best figures 4/15 at Ekana"}]
 };
 
 function getMatchIntelligence(t1, t2) {
