@@ -340,9 +340,16 @@ function render() {
           <input type="number" class="glass-input" placeholder="Enter Amount" id="amt-${match.id}" value="${saved.amount || ''}">
         </div>
 
-        <button class="save-action" onclick="save(${match.id}, '${match.t1} vs ${match.t2}')">
-          Save Selection
-        </button>
+        <div style="display: flex; gap: 10px; margin-top: 5px;">
+          <button class="save-action" style="flex: 1;" onclick="save(${match.id}, '${match.t1} vs ${match.t2}')">
+            Save
+          </button>
+          <a href="match-details.html?t1=${match.t1}&t2=${match.t2}&date=${encodeURIComponent(match.date)}" style="text-decoration: none; flex: 1; display: block;">
+            <button class="save-action" style="width: 100%; background: #2C2C2E; color: #FFF; pointer-events: none;">
+              Details
+            </button>
+          </a>
+        </div>
       </div>
     `;
 
