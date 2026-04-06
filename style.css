@@ -540,16 +540,56 @@ h2 {
   100% { transform: translate(-30px, -50px) scale(0.9); }
 }
 
-/* Strategy Notes */
-.notes-area {
-  min-height: 120px;
-  resize: vertical;
-  background: rgba(255,255,255,0.02);
-  line-height: 1.5;
-  width: 100%;
+/* Recent Activity */
+.recent-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
-.notes-area:focus {
-  background: rgba(255,255,255,0.05);
+.activity-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+}
+.activity-item:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateX(5px);
+}
+.activity-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.activity-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+.activity-time {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+.activity-amount {
+  font-weight: 700;
+  font-size: 16px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.activity-amount.profit {
+  color: var(--success);
+}
+.activity-amount.loss {
+  color: var(--danger);
+}
+.empty-state {
+  color: var(--text-tertiary);
+  font-size: 14px;
+  font-style: italic;
+  padding: 10px 0;
 }
 
 /* Floating FAB */
@@ -633,76 +673,47 @@ h2 {
   color: #fff;
 }
 
-.calc-display {
-  text-align: right;
-  padding: 10px 10px 20px 10px;
-  min-height: 80px;
+.betting-calc-body {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  gap: 10px;
 }
-.calc-expression {
-  font-size: 14px;
-  color: var(--text-tertiary);
-  min-height: 20px;
-  margin-bottom: 5px;
-}
-.calc-main {
-  font-size: 40px;
-  font-weight: 300;
-  letter-spacing: -1px;
-}
-
-.calc-keys {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-.calc-btn {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 12px;
-  color: #fff;
+.bc-input {
   font-size: 20px;
-  font-weight: 500;
-  height: 54px;
+  padding: 12px;
+  text-align: right;
+  height: 50px;
+}
+.bcalc-results {
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 5px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.bcalc-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
 }
-.calc-btn:hover {
-  background: rgba(255,255,255,0.2);
-  transform: scale(1.05);
+.bcalc-row:last-child {
+  margin-bottom: 0;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255,255,255,0.1);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-primary);
 }
-.calc-btn:active {
-  transform: scale(0.95);
-  background: rgba(255,255,255,0.3);
+.profit-highlight {
+  color: var(--success);
+  text-shadow: 0 0 15px rgba(48, 209, 88, 0.3);
 }
-
-.calc-btn.action {
-  background: rgba(255, 69, 58, 0.2);
-  color: #ff5449;
-}
-.calc-btn.action:hover {
-  background: rgba(255, 69, 58, 0.3);
-}
-
-.calc-btn.operator {
-  background: rgba(10, 132, 255, 0.2);
-  color: #0a84ff;
-}
-.calc-btn.operator:hover {
-  background: rgba(10, 132, 255, 0.3);
-}
-
-.calc-btn.equals {
-  background: var(--accent-blue);
-  color: #fff;
-}
-.calc-btn.equals:hover {
-  background: #0070e0;
+.loss-highlight {
+  color: var(--danger);
+  text-shadow: 0 0 15px rgba(255, 69, 58, 0.3);
 }
 
 @media (max-width: 768px) {

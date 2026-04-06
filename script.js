@@ -106,19 +106,10 @@ function init() {
   if (savedWallet && document.getElementById('baseWallet')) {
     document.getElementById('baseWallet').value = savedWallet;
   }
-  
-  const savedNotes = localStorage.getItem('strategyNotes');
-  if (savedNotes && document.getElementById('strategyNotes')) {
-    document.getElementById('strategyNotes').value = savedNotes;
-  }
 
   renderFilters();
   applyFilter();
-}
-
-function autoSaveNotes() {
-  const notes = document.getElementById('strategyNotes').value;
-  localStorage.setItem('strategyNotes', notes);
+  renderRecentActivity();
 }
 
 function updateWallet() {
@@ -314,13 +305,58 @@ function save(id, matchTitle) {
   }
   
   const status = statusElement.value;
-  localStorage.setItem(id, JSON.stringify({amount, status}));
+  localStorage.setItem(id, JSON.stringify({amount, status, timestamp: Date.now()}));
   
   showToast(`Saved ✅`);
   
   setTimeout(() => {
     render();
+    renderRecentActivity();
   }, 100);
+}
+
+function renderRecentActivity() {
+  const container = document.getElementById("recentActivityList");
+  if (!container) return;
+  
+  let activities = [];
+  matches.forEach(match => {
+    const saved = JSON.parse(localStorage.getItem(match.id));
+    if (saved && saved.amount && saved.status) {
+      activities.push({
+        match: match,
+        amount: Number(saved.amount),
+        status: saved.status,
+        timestamp: saved.timestamp || 0
+      });
+    }
+  });
+  
+  activities.sort((a, b) => b.timestamp - a.timestamp);
+  const recent = activities.slice(0, 4);
+  
+  if (recent.length === 0) {
+    container.innerHTML = `<div class="empty-state">No recent activity found. Save a bet to see it here.</div>`;
+    return;
+  }
+  
+  container.innerHTML = recent.map(act => {
+    const isProfit = act.status === 'profit';
+    const amountStr = (isProfit ? '+' : '-') + '₹' + act.amount;
+    const timeStr = act.timestamp ? new Date(act.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : 'Previous';
+    
+    return `
+      <div class="activity-item">
+        <div class="activity-details">
+          <div class="activity-title">${act.match.t1} vs ${act.match.t2}</div>
+          <div class="activity-time">${act.match.date} &bull; ${timeStr}</div>
+        </div>
+        <div class="activity-amount ${act.status}">
+          ${amountStr}
+        </div>
+      </div>
+    `;
+  }).join('');
 }
 
 function clearAllData() {
@@ -332,6 +368,7 @@ function clearAllData() {
     }
     showToast("All data cleared successfully");
     render();
+    renderRecentActivity();
   }
 }
 
@@ -339,105 +376,26 @@ function clearAllData() {
 window.onload = init;
 
 // CALCULATOR LOGIC
-let calcCurrent = '0';
-let calcPrev = '';
-let calcOperator = null;
-let calcResetDisplay = false;
-
 function toggleCalculator() {
   const modal = document.getElementById('calcModal');
   modal.classList.toggle('show');
 }
 
-function updateCalcDisplay() {
-  const main = document.getElementById('calcDisplay');
-  const expr = document.getElementById('calcExpression');
+function calcBettingReturn() {
+  const stake = parseFloat(document.getElementById('bcStake').value) || 0;
+  const odds = parseFloat(document.getElementById('bcOdds').value) || 0;
   
-  // Format numbers nicely with commas if possible
-  main.innerText = calcCurrent.length > 12 ? Number(calcCurrent).toExponential(4) : calcCurrent;
+  const returnAmt = stake * odds;
+  const profitAmt = returnAmt - stake;
   
-  if (calcOperator != null) {
-    expr.innerText = `${calcPrev} ${calcOperator}`;
+  document.getElementById('bcReturn').innerText = '₹' + returnAmt.toFixed(2);
+  
+  const profitEl = document.getElementById('bcProfit');
+  profitEl.innerText = (profitAmt >= 0 ? '+₹' : '-₹') + Math.abs(profitAmt).toFixed(2);
+  
+  if (profitAmt >= 0) {
+    profitEl.className = 'profit-highlight';
   } else {
-    expr.innerText = '';
+    profitEl.className = 'loss-highlight';
   }
-}
-
-function calcNum(num) {
-  if (calcCurrent === '0' && num !== '.') {
-    calcCurrent = num;
-  } else if (calcResetDisplay) {
-    if (num === '.') {
-      calcCurrent = '0.';
-    } else {
-      calcCurrent = num;
-    }
-    calcResetDisplay = false;
-  } else {
-    if (num === '.' && calcCurrent.includes('.')) return;
-    calcCurrent += num;
-  }
-  updateCalcDisplay();
-}
-
-function calcOp(op) {
-  if (calcOperator !== null && !calcResetDisplay) {
-    calcCalculate();
-  }
-  calcPrev = calcCurrent;
-  calcOperator = op;
-  calcResetDisplay = true;
-  updateCalcDisplay();
-}
-
-function calcCalculate() {
-  if (calcOperator === null || calcResetDisplay) return;
-  
-  let result;
-  const prev = parseFloat(calcPrev);
-  const curr = parseFloat(calcCurrent);
-  
-  if (isNaN(prev) || isNaN(curr)) return;
-  
-  switch (calcOperator) {
-    case '+': result = prev + curr; break;
-    case '-': result = prev - curr; break;
-    case '*': result = prev * curr; break;
-    case '/': 
-      if (curr === 0) {
-        alert("Cannot divide by zero!");
-        calcAction('clear');
-        return;
-      }
-      result = prev / curr; 
-      break;
-    default: return;
-  }
-  
-  // Round to prevent JS floating point issues
-  calcCurrent = Math.round(result * 10000000) / 10000000;
-  calcCurrent = calcCurrent.toString();
-  calcOperator = null;
-  calcPrev = '';
-  calcResetDisplay = true;
-  updateCalcDisplay();
-}
-
-function calcAction(action) {
-  if (action === 'clear') {
-    calcCurrent = '0';
-    calcPrev = '';
-    calcOperator = null;
-    calcResetDisplay = false;
-  } else if (action === 'delete') {
-    if (calcResetDisplay) {
-      calcAction('clear');
-      return;
-    }
-    calcCurrent = calcCurrent.slice(0, -1);
-    if (calcCurrent === '' || calcCurrent === '-' || calcCurrent === '-0') {
-      calcCurrent = '0';
-    }
-  }
-  updateCalcDisplay();
 }

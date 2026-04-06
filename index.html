@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>IPL 2026 Profit Tracker ✨</title>
   <meta name="description" content="Track your IPL 2026 betting profits and losses with a sleek Apple-style dashboard.">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
   
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/54/54481.png" type="image/png">
 </head>
@@ -47,10 +47,12 @@
       </div>
     </div>
 
-    <!-- Strategy Notes Section -->
-    <div class="notes-container">
-      <div class="stat-label" style="margin-top: 30px; margin-bottom: 15px; text-align: left;">Strategy & Notes</div>
-      <textarea id="strategyNotes" class="glass-input notes-area" placeholder="Jot down your weekly betting strategies or reminders here..." oninput="autoSaveNotes()"></textarea>
+    <!-- Recent Activity -->
+    <div class="recent-activity-container" style="margin-top: 40px; border-top: 1px solid var(--glass-border); padding-top: 20px;">
+      <div class="stat-label" style="text-align: left; margin-bottom: 20px; font-size: 14px; letter-spacing: 2px;">Recent Betting Activity</div>
+      <div id="recentActivityList" class="recent-activity-list">
+        <!-- populated by JS -->
+      </div>
     </div>
   </header>
 
@@ -88,36 +90,33 @@
 
   <div class="calculator-modal glass-panel" id="calcModal">
     <div class="calc-header">
-      <span>Calculator</span>
+      <span>Profit Calculator</span>
       <button class="calc-close" onclick="toggleCalculator()">&times;</button>
     </div>
-    <div class="calc-display">
-      <div class="calc-expression" id="calcExpression"></div>
-      <div class="calc-main" id="calcDisplay">0</div>
-    </div>
-    <div class="calc-keys">
-      <button class="calc-btn action" onclick="calcAction('clear')">AC</button>
-      <button class="calc-btn action" onclick="calcAction('delete')">DEL</button>
-      <button class="calc-btn operator" onclick="calcOp('/')">&divide;</button>
-      <button class="calc-btn operator" onclick="calcOp('*')">&times;</button>
+    
+    <div class="betting-calc-body">
+      <div class="input-container">
+        <div class="stat-label" style="color: var(--text-secondary); margin-bottom: 5px;">Stake (₹)</div>
+        <input type="number" id="bcStake" class="glass-input bc-input" placeholder="e.g. 1000" oninput="calcBettingReturn()">
+      </div>
       
-      <button class="calc-btn" onclick="calcNum('7')">7</button>
-      <button class="calc-btn" onclick="calcNum('8')">8</button>
-      <button class="calc-btn" onclick="calcNum('9')">9</button>
-      <button class="calc-btn operator" onclick="calcOp('-')">-</button>
+      <div class="input-container">
+        <div class="stat-label" style="color: var(--text-secondary); margin-bottom: 5px;">Match Odds (Decimal)</div>
+        <input type="number" id="bcOdds" class="glass-input bc-input" placeholder="e.g. 1.85" step="0.01" oninput="calcBettingReturn()">
+      </div>
+
+      <div class="bcalc-results">
+        <div class="bcalc-row">
+          <span>Return</span>
+          <span id="bcReturn">₹0.00</span>
+        </div>
+        <div class="bcalc-row">
+          <span>Net Profit</span>
+          <span id="bcProfit" class="profit-highlight">₹0.00</span>
+        </div>
+      </div>
       
-      <button class="calc-btn" onclick="calcNum('4')">4</button>
-      <button class="calc-btn" onclick="calcNum('5')">5</button>
-      <button class="calc-btn" onclick="calcNum('6')">6</button>
-      <button class="calc-btn operator" onclick="calcOp('+')">+</button>
-      
-      <button class="calc-btn" onclick="calcNum('1')">1</button>
-      <button class="calc-btn" onclick="calcNum('2')">2</button>
-      <button class="calc-btn" onclick="calcNum('3')">3</button>
-      <button class="calc-btn equals" style="grid-row: span 2;" onclick="calcCalculate()">=</button>
-      
-      <button class="calc-btn" style="grid-column: span 2;" onclick="calcNum('0')">0</button>
-      <button class="calc-btn" onclick="calcNum('.')">.</button>
+      <button class="save-action" onclick="toggleCalculator()" style="margin-top: 15px;">Close</button>
     </div>
   </div>
 
