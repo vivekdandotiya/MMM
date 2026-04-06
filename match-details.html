@@ -111,6 +111,15 @@
         <div style="font-size: 13px; color: #8E8E93; margin-top: 16px; margin-bottom: 4px; font-weight: 600;">AVERAGE 1ST INNINGS</div>
         <div class="avg-score" id="venueAvg">0</div>
         <div id="pitchBadges"></div>
+        <div id="prevMatchBox" style="margin-top: 24px; padding: 16px; background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px dashed rgba(255,255,255,0.1);">
+          <div style="color: #8E8E93; font-size: 11px; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.5px;">Last 2025 Match At Venue</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.7);">
+            <span id="prevT1">Team A <span style="color: #FFF; font-size: 16px; margin-left: 8px;" id="prevS1">0/0</span></span>
+            <span style="font-size: 12px; color: rgba(255,255,255,0.3);">VS</span>
+            <span id="prevT2"><span style="color: #FFF; font-size: 16px; margin-right: 8px;" id="prevS2">0/0</span> Team B</span>
+          </div>
+          <div id="prevResult" style="color: #30D158; font-size: 13px; margin-top: 12px; font-weight: 600;">Result</div>
+        </div>
       </div>
       
       <!-- Squad Widgets -->
@@ -134,7 +143,7 @@
     </div>
   </div>
 
-  <script src="match-data.js?v=4"></script>
+  <script src="match-data.js?v=5"></script>
   <script>
     window.onload = function() {
       const params = new URLSearchParams(window.location.search);
@@ -161,6 +170,15 @@
           badges += `<span class="pitch-badge" style="border-color: rgba(255,255,255,0.4); color: #FFF;">📐 ${intel.venue.size}</span>`;
         }
         document.getElementById('pitchBadges').innerHTML = badges;
+        
+        // Previous Match
+        if (intel.venue.prevMatch) {
+          document.getElementById('prevT1').innerHTML = `${intel.venue.prevMatch.t1} <span style="color: #FFF; font-size: 16px; margin-left: 8px;">${intel.venue.prevMatch.s1}</span>`;
+          document.getElementById('prevT2').innerHTML = `<span style="color: #FFF; font-size: 16px; margin-right: 8px;">${intel.venue.prevMatch.s2}</span> ${intel.venue.prevMatch.t2}`;
+          document.getElementById('prevResult').innerText = intel.venue.prevMatch.result;
+        } else {
+          document.getElementById('prevMatchBox').style.display = 'none';
+        }
         
         // Populate Squads
         document.getElementById('team1Name').innerText = t1;
