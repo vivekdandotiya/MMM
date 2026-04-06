@@ -169,8 +169,21 @@ function render() {
 
   // Display top dashboard stats
   const totalEl = document.getElementById("totalProfit");
-  totalEl.innerText = totalProfit < 0 ? `-₹${Math.abs(totalProfit)}` : `₹${totalProfit}`;
-  totalEl.className = `stat-value ${totalProfit > 0 ? 'profit' : (totalProfit < 0 ? 'loss' : '')}`;
+  const labelEl = totalEl.previousElementSibling;
+
+  if (totalProfit > 0) {
+    totalEl.innerText = `+₹${totalProfit}`;
+    labelEl.innerText = "Total Profit";
+    totalEl.className = "stat-value profit";
+  } else if (totalProfit < 0) {
+    totalEl.innerText = `-₹${Math.abs(totalProfit)}`;
+    labelEl.innerText = "Total Loss";
+    totalEl.className = "stat-value loss";
+  } else {
+    totalEl.innerText = `₹0`;
+    labelEl.innerText = "Total Net P/L";
+    totalEl.className = "stat-value";
+  }
   
   document.getElementById("matchesBet").innerText = matchesBetCount;
   
