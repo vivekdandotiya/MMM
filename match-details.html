@@ -157,6 +157,9 @@
         let badges = `<span class="pitch-badge">${intel.venue.type}</span>`;
         badges += `<span class="pitch-badge ${intel.venue.paceOrSpin === 'Pacers' ? 'pace' : 'spin'}">${intel.venue.paceOrSpin} Favored</span>`;
         badges += `<span class="pitch-badge">${intel.venue.batOrBowl} Pitch</span>`;
+        if (intel.venue.size) {
+          badges += `<span class="pitch-badge" style="border-color: rgba(255,255,255,0.4); color: #FFF;">📐 ${intel.venue.size}</span>`;
+        }
         document.getElementById('pitchBadges').innerHTML = badges;
         
         // Populate Squads
