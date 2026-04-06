@@ -3,43 +3,83 @@
 const venueData = {
   "CSK": { 
     name: "M.A. Chidambaram Stadium, Chennai", avg: 165, type: "Spin Friendly", paceOrSpin: "Spinners", batOrBowl: "Bowling", size: "Sq: 64-72m | St: 65-74m",
-    prevMatch: { t1: "CSK", s1: "190/6", t2: "PBKS", s2: "194/6", result: "PBKS won by 4 wickets" }
+    prevMatches: [
+      { t1: "CSK", s1: "190/6", t2: "PBKS", s2: "194/6", result: "PBKS won by 4 wkts" },
+      { t1: "CSK", s1: "175/4", t2: "MI", s2: "171/8", result: "CSK won by 4 runs" },
+      { t1: "CSK", s1: "158/5", t2: "DC", s2: "183/6", result: "DC won by 25 runs" }
+    ]
   },
   "RCB": { 
     name: "M. Chinnaswamy Stadium, Bangalore", avg: 195, type: "Batter's Paradise", paceOrSpin: "Pacers", batOrBowl: "Batting", size: "Sq: 50-65m | St: 60-70m",
-    prevMatch: { t1: "RCB", s1: "213/5", t2: "CSK", s2: "211/5", result: "RCB won by 2 runs" }
+    prevMatches: [
+      { t1: "RCB", s1: "213/5", t2: "CSK", s2: "211/5", result: "RCB won by 2 runs" },
+      { t1: "RCB", s1: "169/8", t2: "GT", s2: "170/2", result: "GT won by 8 wkts" },
+      { t1: "RCB", s1: "187/9", t2: "DC", s2: "140/10", result: "RCB won by 47 runs" }
+    ]
   },
   "MI": { 
     name: "Wankhede Stadium, Mumbai", avg: 185, type: "Pacer Friendly, Dew Impact", paceOrSpin: "Pacers", batOrBowl: "Batting", size: "Sq: 63-68m | St: 68-72m",
-    prevMatch: { t1: "MI", s1: "215/7", t2: "LSG", s2: "161/10", result: "MI won by 54 runs" }
+    prevMatches: [
+      { t1: "MI", s1: "215/7", t2: "LSG", s2: "161/10", result: "MI won by 54 runs" },
+      { t1: "MI", s1: "196/3", t2: "RCB", s2: "199/3", result: "RCB won by 7 wkts" },
+      { t1: "MI", s1: "180/5", t2: "DC", s2: "121/10", result: "MI won by 59 runs" }
+    ]
   },
   "KKR": { 
     name: "Eden Gardens, Kolkata", avg: 175, type: "Fast Outfield, High Scoring", paceOrSpin: "Pacers", batOrBowl: "Batting", size: "Sq: 66-68m | St: 74-78m",
-    prevMatch: { t1: "KKR", s1: "200/6", t2: "SRH", s2: "120/10", result: "KKR won by 80 runs" }
+    prevMatches: [
+      { t1: "KKR", s1: "200/6", t2: "SRH", s2: "120/10", result: "KKR won by 80 runs" },
+      { t1: "KKR", s1: "174/8", t2: "RCB", s2: "177/3", result: "RCB won by 7 wkts" },
+      { t1: "KKR", s1: "179/6", t2: "CSK", s2: "183/8", result: "CSK won by 2 wkts" }
+    ]
   },
   "RR": { 
     name: "Sawai Mansingh Stadium, Jaipur", avg: 160, type: "Slow Track", paceOrSpin: "Spinners", batOrBowl: "Bowling", size: "Sq: 63-72m | St: 73-78m",
-    prevMatch: { t1: "RR", s1: "176/6", t2: "GT", s2: "179/7", result: "GT won by 3 wickets" }
+    prevMatches: [
+      { t1: "RR", s1: "176/6", t2: "GT", s2: "179/7", result: "GT won by 3 wkts" },
+      { t1: "RR", s1: "193/4", t2: "LSG", s2: "173/6", result: "RR won by 20 runs" },
+      { t1: "RR", s1: "214/2", t2: "MI", s2: "212/8", result: "RR won by 2 runs" }
+    ]
   },
   "SRH": { 
     name: "Rajiv Gandhi Intl Stadium, Hyderabad", avg: 170, type: "Balanced", paceOrSpin: "Pacers", batOrBowl: "Balanced", size: "Sq: 66-69m | St: 69-71m",
-    prevMatch: { t1: "SRH", s1: "277/3", t2: "MI", s2: "246/5", result: "SRH won by 31 runs" }
+    prevMatches: [
+      { t1: "SRH", s1: "277/3", t2: "MI", s2: "246/5", result: "SRH won by 31 runs" },
+      { t1: "SRH", s1: "165/8", t2: "CSK", s2: "166/4", result: "CSK won by 6 wkts" },
+      { t1: "SRH", s1: "201/5", t2: "RR", s2: "200/7", result: "SRH won by 1 run" }
+    ]
   },
   "DC": { 
     name: "Arun Jaitley Stadium, Delhi", avg: 165, type: "Slow, Spin Friendly", paceOrSpin: "Spinners", batOrBowl: "Batting", size: "Sq: 63-67m | St: 68-75m",
-    prevMatch: { t1: "DC", s1: "183/6", t2: "CSK", s2: "158/5", result: "DC won by 25 runs" }
+    prevMatches: [
+      { t1: "DC", s1: "183/6", t2: "CSK", s2: "158/5", result: "DC won by 25 runs" },
+      { t1: "DC", s1: "257/4", t2: "MI", s2: "247/9", result: "DC won by 10 runs" },
+      { t1: "DC", s1: "208/5", t2: "RR", s2: "188/8", result: "DC won by 20 runs" }
+    ]
   },
   "PBKS": { 
     name: "Mullanpur Stadium, Chandigarh", avg: 170, type: "Pace & Bounce", paceOrSpin: "Pacers", batOrBowl: "Batting", size: "Sq: 64-67m | St: 75m",
-    prevMatch: { t1: "PBKS", s1: "192/7", t2: "MI", s2: "195/4", result: "MI won by 6 wickets" }
+    prevMatches: [
+      { t1: "PBKS", s1: "192/7", t2: "MI", s2: "195/4", result: "MI won by 6 wkts" },
+      { t1: "PBKS", s1: "142/10", t2: "GT", s2: "146/3", result: "GT won by 7 wkts" },
+      { t1: "PBKS", s1: "214/3", t2: "SRH", s2: "212/6", result: "PBKS won by 2 runs" }
+    ]
   },
   "GT": { 
     name: "Narendra Modi Stadium, Ahmedabad", avg: 175, type: "Pacer Friendly", paceOrSpin: "Pacers", batOrBowl: "Batting", size: "Sq: 65-70m | St: 75-80m",
-    prevMatch: { t1: "GT", s1: "170/2", t2: "RCB", s2: "169/8", result: "GT won by 8 wickets" }
+    prevMatches: [
+      { t1: "GT", s1: "170/2", t2: "RCB", s2: "169/8", result: "GT won by 8 wkts" },
+      { t1: "GT", s1: "199/4", t2: "PBKS", s2: "200/7", result: "PBKS won by 3 wkts" },
+      { t1: "GT", s1: "231/3", t2: "CSK", s2: "196/8", result: "GT won by 35 runs" }
+    ]
   },
   "LSG": { 
     name: "Ekana Stadium, Lucknow", avg: 150, type: "Sluggish, Spin Friendly", paceOrSpin: "Spinners", batOrBowl: "Bowling", size: "Sq: 69-76m | St: 81m",
-    prevMatch: { t1: "LSG", s1: "165/5", t2: "KKR", s2: "160/8", result: "LSG won by 5 runs" }
+    prevMatches: [
+      { t1: "LSG", s1: "163/5", t2: "GT", s2: "130/10", result: "LSG won by 33 runs" },
+      { t1: "LSG", s1: "176/8", t2: "CSK", s2: "180/2", result: "CSK won by 8 wkts" },
+      { t1: "LSG", s1: "199/8", t2: "PBKS", s2: "178/5", result: "LSG won by 21 runs" }
+    ]
   }
 };
 
